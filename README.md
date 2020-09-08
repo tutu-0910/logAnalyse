@@ -137,5 +137,5 @@ ip:8000
 
 ## <span id="head18">访问地址</span>
 http://210.22.22.150:2205/
-## <span id="head19">访问地址</span>
+## <span id="head19">分析结果展示示例</span>
 https://dw.pcl.ac.cn/dwmain/gitLogStat.html
