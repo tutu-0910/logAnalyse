@@ -1,0 +1,213 @@
+
+*{ margin:0; padding:0;}
+
+body { font:12px/1.5 Arial; color:#666; background:#fff;}
+
+ul,li{ list-style:none;}
+
+img{border:0 none;}
+
+/*---------------------------------------demo css--------------------------------------------*/
+
+.date_selector, .date_selector *{width: auto;height: auto;border: none;background: none;margin: 0;padding: 0;text-align: left;text-decoration: none;}
+
+.date_selector{background:#fbfbfb;border: 1px solid #ccc;padding: 10px;margin:0;margin-top:-1px;position: absolute;z-index:100000;display:none;border-radius: 3px;box-shadow: 0 0 5px #aaa;box-shadow:0 2px 2px #ccc; width:220px;}
+
+.date_selector_ieframe{position: absolute;z-index: 99999;display: none;}
+
+.date_selector .nav{width: 17.5em;}
+
+.date_selector .nav p{clear: none;}
+
+.date_selector .month_nav, .date_selector .year_nav{margin: 0 0 3px 0;padding: 0;display: block;position: relative;text-align: center;}
+
+.date_selector .month_nav{float: left;width: 55%;}
+
+.date_selector .year_nav{float: right;width: 42%;margin-right: -8px;}
+
+.date_selector .month_name, .date_selector .year_name{font-weight: bold;line-height: 20px;}
+
+.date_selector .button{display: block;position: absolute;top: 0;width:18px;height:18px;line-height:16px;font-weight:bold;color:#5985c7;text-align: center;font-size:12px;overflow:hidden;border: 1px solid #ccc;border-radius:2px;}
+
+.date_selector .button:hover, .date_selector .button.hover{background:#5985c7;color: #fff;cursor: pointer;border-color:#3a930d;}
+
+.date_selector .prev{left: 0;}
+
+.date_selector .next{right: 0;}
+
+.date_selector table{border-spacing: 0;border-collapse: collapse;clear: both;margin: 0; width:220px;}
+
+.date_selector th, .date_selector td{width: 2.5em;height: 2em;padding: 0 !important;text-align: center !important;color: #666;font-weight: normal;}
+
+.date_selector th{font-size: 12px;}
+
+.date_selector td{border:1px solid #f1f1f1;line-height: 2em;text-align: center;white-space: nowrap;color:#5985c7;background: #fff;}
+
+.date_selector td.today{background: #eee;}
+
+.date_selector td.unselected_month{color: #ccc;}
+
+.date_selector td.selectable_day{cursor: pointer;}
+
+.date_selector td.selected{background:#2b579a;color: #fff;font-weight: bold;}
+
+.date_selector td.selectable_day:hover, .date_selector td.selectable_day.hover{background:#5985c7;color: #fff;}
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family: "微软雅黑";
+}
+#wrapper {
+	width: 100%;
+	height: 1080px;
+	background-color:rgba(0, 0, 0, 0.623);
+}
+#wrapper #logo .login a {
+	color: white;
+	text-decoration: none;
+}
+#wrapper #logo .login a:hover {
+	text-decoration: underline;
+}
+#wrapper #divform {
+	width: 570px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: rgba(173, 173, 173, 0.3);
+	border-radius: 20px;
+	padding-top: 20px;
+}
+.title_text {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	height: 40px;
+	width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 15px;
+}
+#wrapper #divform table {
+	margin-top: 25px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+#wrapper #divform .td {
+	height: 55px;
+	font-size: 18px;
+	color: #FFFFFF;
+	line-height: 55px;
+	text-align: right;
+	padding-right: 20px;
+}
+#wrapper #divform #mailbox, #url, #path, #author, #frequency, #startTime,#endTime,#receiveData,#mailbox {
+	height: 30px;
+	width: 300px;
+	font-size: 14px;
+	text-indent: 5px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+}
+#wrapper #divform input:hover {
+	border: 1px solid #FFFFFF;
+}
+#wrapper #divform #box1, #box2, #box3, #box4, #box5, #box6 {
+	display: none;
+	height: 20px;
+	color: #FFFFFF;
+	line-height: 20px;
+ 	font-size: 12px;
+	background-color: rgba(0, 0, 0, 0.8);
+	border: 1px dashed #FFFFFF;
+	position: absolute;
+	margin-left: 195px;
+	border-radius: 5px;
+	font-size: 12px;
+	text-align: center;
+}
+
+#wrapper #divform #box1 {
+	margin-top: 45px;
+	width: 235px;
+}
+#wrapper #divform #box2 {
+	margin-top: 100px;
+	width: 210px;
+}
+#wrapper #divform #box3 {
+	margin-top: 155px;
+	width: 290px;
+}
+#wrapper #divform #box4 {
+	margin-top: 210px;
+	width: 280px;
+}
+#wrapper #divform #box5 {
+	margin-top: 265px;
+	width: 190px;
+}
+#wrapper #divform #box6 {
+	margin-top: 320px;
+	width: 210px;
+}
+
+#wrapper #divform #btn {
+	width: 300px;
+	height: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+}
+#wrapper #divform #btn #submit {
+	height: 30px;
+	width: 120px;
+	font-size: 14px;
+	float: left;
+	background-color: rgba(173, 173, 173, 0.2);
+	color: black;
+	border: 1px solid #000000;
+	border-radius: 5px;
+}
+#wrapper #divform #btn #submit:hover {
+	background-color: black;
+	color: white;
+	border: 1px solid #FFFFFF;
+}
+#wrapper #divform #btn #resetting {
+	height: 30px;
+	width: 120px;
+	float: right;
+	font-size: 14px;
+	background-color: rgba(173, 173, 173, 0.2);
+	color: black;
+	border: 1px solid #000000;
+	border-radius: 5px;
+}
+#wrapper #divform #btn #resetting:hover {
+	background-color: black;
+	color: white;
+	border: 1px solid #FFFFFF;
+}
+.select_type{
+	width : 300px;
+	height: 30px;
+	border: 1px solid #000000;
+    border-radius: 5px;
+}
+.commit-button{
+	color: #37474f;
+	border-color: #3f51b5;
+	border: 1px solid;
+	border-radius: 5px;
+	margin-left: 45%;
+	width: 80px;
+	height: 40px;
+    display: block;
+	z-index: 1;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	font-size: 18px;
+}

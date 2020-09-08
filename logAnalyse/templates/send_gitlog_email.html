@@ -1,0 +1,61 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+    .td_info{
+        padding-left: 30px; 
+        padding-top: 10px; 
+        font-size: 15px;
+    }
+    p{
+        font-size: 18px;
+        margin-left: 60px;
+    }
+    a{
+        font-size: 18px;
+        text-decoration:none;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body style="margin-left: 40px;">
+        <tbody style="margin-left: 80px;">
+           <h1 style="font-size: 20px;">尊敬的鹏城生态用户:</h1>
+            <p >感谢您使用鹏城生态gitLog分析工具，您申请分析记录如下:</p>    
+            <p > </p>
+            <div style="margin-left: 80px;">
+                <table width="400" border="2" cellspacing="0" > 
+                    <tr >
+                        <td class="td_info">gitHub地址</td>
+                        <td>{{gitHub_url}}</td>
+                    </tr>
+                    <tr >
+                        <td class="td_info">统计修改路径</td>
+                        <td>{{path}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td_info">统计提交用户</td>
+                        <td>{{auth}}</td>
+                    </tr> 
+                    <tr>
+                        <td class="td_info">统计频率</td>
+                        <td>{{freq}}</td>
+                    </tr> 
+                    <tr>
+                        <td class="td_info">开始时间</td>
+                        <td>{{startTime}}</td>
+                    </tr> 
+                    <tr>
+                        <td class="td_info">结束时间</td>
+                        <td>{{endtime}}</td>
+                    </tr> 
+                </table> 
+            </div>
+            <p>您的分析结果如下，请点击下方连接下载分析结果:</p>
+            <a style="margin-left: 60px;" href="http://10.10.18.16:8000/static/logfile/{{fileName}}" download="{{fileName}}">{{fileName}}</a> 
+            <p >感谢您对“鹏城生态”的支持，如需申请国产计算生态提供的虚拟机资源，请关注<a  href="https://dw.pcl.ac.cn">鹏城生态</a> </p>
+            </tr>
+        </tbody>
+</body>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>gitLog提交统计分析</title>
+<link type="text/css" rel="stylesheet" href="/static/table.css">
+<script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/static/js/jquery.date_input.pack.js"></script> 
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+$(function(){
+
+	$('.date_picker').date_input();
+	
+    var mailbox_bool = false;
+	var receive_bool = false;
+	var frequency_bool = false;
+	var url_bool = false;
+	var path_boll = true;
+	var authon_boll = true;
+    //验证邮箱
+    $('#mailbox').blur(function() {
+        var mailboxval = $('#mailbox').val();
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+        if(mailboxval.length != 0 && re.test(mailboxval)) {
+            $('#mailbox').css('borderColor', '#39e962');
+            mailbox_bool = true;
+        } else {
+            $('#mailbox').css('borderColor', 'red');
+            mailbox_bool = false;
+        }
+    });
+	//验证提交路径
+	$('#path').blur(function(){
+		var pathboxval = $('#path').val();
+		var re = /^[a-zA-Z0-9_;_//]+$/;
+		if(pathboxval.length != 0 && !(re.test(pathboxval))) {
+			$('#path').css('borderColor', 'red');
+            path_boll = false;
+        } else if(pathboxval.length == 0 || re.test(pathboxval)) {
+			$('#path').css('borderColor', '#39e962');
+            path_boll = true;
+        }
+	});
+	//验证提交用户
+	$('#author').blur(function(){
+		var authorboxval = $('#author').val();
+		var re = /^[a-zA-Z0-9_;]+$/;
+		if(authorboxval.length != 0 && !(re.test(authorboxval))) {
+			$('#author').css('borderColor', 'red');
+            authon_boll = false;
+        } else if(authorboxval.length == 0 || re.test(authorboxval)) {
+			$('#author').css('borderColor', '#39e962');
+            authon_boll = true;
+        }
+	});
+	})
+
+
+</script>
+
+<div id="wrapper">
+	<div id="divform">
+	  <p class="title_text">gitLog分析工具</p>
+	  <form id="form">
+		<span id="box1">提示：请输入官网可检验真伪的正规邮箱</span><table width="600" border="0" cellspacing="0" cellpadding="0">
+		  <tbody>
+			  <tr>
+				  <td class="td">gitHub地址</td>
+				  <td><input id="url" type="text"  placeholder="请输入github地址"></td>
+			  </tr>
+			  <tr>
+				  <td class="td">统计修改路径</td>
+				  <td><input id="path" type="text" placeholder="不同路径以;隔开，全路径可不输入"></td>
+			  </tr>
+			  <tr>
+				  <td class="td">统计提交用户</td>
+				  <td><input id="author" type="text" placeholder="不同提交用户以;隔开，全部用户可不输入"></td>
+			  </tr>
+			  <tr>
+				  <td class="td">统计频率</td>
+				  <td>
+						<select id="frequency" class='select_type'>
+							<option value="new" disabled>统计commit频率</option>
+							<option value="1" selected>月</option>
+							<option value="3" >季度</option>
+							<option value="6" >半年</option>
+							<option value="12" >年</option>
+						</select>
+				
+					
+					<!-- 这里结束 -->
+				</td>
+			  </tr>
+			  <tr>
+				  <td class="td">开始时间</td>
+				  <td><input id="startTime"  class="date_picker" placeholder="2015-01-01"></td>
+			  </tr>
+			  <tr>
+				  <td class="td">结束时间</td>
+				  <td><input id="endTime" class="date_picker" placeholder="2020-08-30"></td>
+			  </tr>
+			  <tr>
+				  <td class="td">接收数据方式</td>
+				  <td>
+			
+						<select id="data_type" class='select_type'>
+							<option value="new" disabled>接收数据格式</option>
+							<option value="sql">sql格式</option>
+							<option value="excel" selected>excel格式</option>
+						</select>
+					<!-- 这里结束 -->
+				</td>
+			  </tr>
+			  <tr>
+				  <td class="td">接收数据邮箱</td>
+				  <td><input id="mailbox" type="text" placeholder="提示：请输入官网可检验真伪的正规邮箱"></td>
+			  </tr>
+		</tbody>
+		
+	</table>
+	<button class="commit-button" onclick="submit_form()">提交</button>
+	  </form>
+	  　　<iframe id="rfFrame" name="rfFrame" src="about:blank" style="display:none;"></iframe> 
+
+
+	
+	</div>
+	<script type="text/javascript">
+		function submit_form() {
+			var email = document.getElementById("mailbox").value;
+			var endTime = document.getElementById("endTime").value;
+			var startTime =  document.getElementById("startTime").value;
+			var author =  document.getElementById("author").value;
+			var path =  document.getElementById("path").value;
+			var url = document.getElementById("url").value;
+			var frequency = document.getElementById('frequency');
+            var frequency_type=frequency.selectedIndex;
+			var data_type = document.getElementById('data_type');
+            var type=data_type.selectedIndex;
+			console.log(data_type+type)
+			var re = /^[a-zA-Z0-9_;]+$/;
+			var repath = /^[a-zA-Z0-9_;_//]+$/;
+			var url_flag = true;
+			var path_flag = true;
+			var auth_flag = true;
+			var email_flag = true; 
+			if(url.length == 0){
+				document.forms[0].target="rfFrame"; 
+				var url_flag = false;
+				alert("请输入正确的需要分析的路径")	
+			}
+			if(path.length != 0 && !(repath.test(path))){
+				path_flag = false;
+				alert("请输入文件路径用英文;隔开，如果统计所有路径的总提交数，可不填写")
+			}else if(path.length == 0){
+				path = ""
+			}
+			if(author.length != 0 && !(re.test(author))){
+				auth_flag = false;
+				alert("请输入用户名(大小写字符及下划线)用英文;隔开，如果统计总提交数，可不填写")
+			}else if(author.length == 0){
+				author = ""
+			}
+			var email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+			if(email.length != 0 && email_re.test(email)) {
+				$('#mailbox').css('borderColor', '#39e962');
+				mailbox_bool = true;
+			}else{
+				alert("请输入正确的邮箱地址")
+				email_flag = false; 
+			}
+			if(startTime.length == 0){
+				startTime="2015-01-01"
+			}
+			if(endTime.length == 0){
+				endTime = "2020-08-30"
+			}
+			var dataJson = {
+			"gitCloneUrl":url,
+			"gitpath":path,
+			"startTime":startTime,
+			"endTime":endTime,
+			"commitFreq":frequency_type,
+			"author":author,
+			"file_type":type,
+			"email":email
+			}
+			if(email_flag && url_flag && path_flag && auth_flag){
+				alert("gitLog日志分析已提交，结果会发至邮箱，请耐心等待")
+				var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+				var postUrl = "http://210.22.22.150:1740/setgitLogData/"
+				httpRequest.open('POST', postUrl, true); //第二步：打开连接
+				httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+				httpRequest.send(JSON.stringify(dataJson));//发送请求 将情头体写在send中
+				/**
+				* 获取数据后的处理程序
+				*/
+				httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
+					if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
+						var json = httpRequest.responseText;//获取到服务端返回的数据
+						console.log(json);
+						alert("gitLog分析数据已发送至邮箱，请注意查收")
+					}
+				};
+			}
+			
+ 			
+		}
+	</script>
+	</script>
+	
+  </div>
+</body> 
+
+</html>
