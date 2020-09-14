@@ -1,5 +1,5 @@
 
-![](https://github.com/tutu-0910/logAnalyse/blob/master/logAnalyse/gitlogStatic/img/favicon.ico =200*200)<br>
+![](https://github.com/tutu-0910/logAnalyse/blob/master/logAnalyse/gitlogStatic/img/favicon.ico)<br>
 
 ### 开发单位：鹏城实验室(PCL)
 
@@ -141,13 +141,15 @@ https://dw.pcl.ac.cn/gitlog/
 ## <span id="head19">分析结果展示示例</span>
 https://dw.pcl.ac.cn/dwmain/gitLogStat.html
 
-1.选择-统计以公司为单位的提交排名
-2.输入Linux的github地址
-3.输入需要统计的时间范围(2015-01-01至2020-09-04)
-4.输入接收数据邮箱
-5.输入统计提交目录(也可为空)
-6.得到数据后，合并统一单位的邮箱结果，如合并huawei.com和hisilicon.com、intel.com和linux.intel.com等
-7.根据合并后结果画图如下
+![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/3.png)
+
+1. 选择-统计以公司为单位的提交排名
+2. 输入Linux的github地址
+3. 输入需要统计的时间范围(2015-01-01至2020-09-04)
+4. 输入接收数据邮箱
+5. 输入统计提交目录(也可为空)
+6. 得到数据后，合并统一单位的邮箱结果，如合并huawei.com和hisilicon.com、intel.com和linux.intel.com等
+7. 根据合并后结果画图如下
 图片替换文本 图片替换文本
 
 图片替换文本 图片替换文本
