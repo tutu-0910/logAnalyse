@@ -63,10 +63,10 @@ STATICFILES_DIRS = (
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
-EMAIL_HOST = 'smtp.xxx.xx.cn'
-EMAIL_HOST_USER = 'username@xxx.xx.cn'
-EMAIL_HOST_PASSWORD = 'password'
-DEFAULT_FORM_EMAIL = 'username<username@xxx.xx.cn>'
+EMAIL_HOST = 'smtp.pcl.ac.cn'
+EMAIL_HOST_USER = 'dwadm@pcl.ac.cn'
+EMAIL_HOST_PASSWORD = 'Hipcl-kylin#$.HAOhaiyo'
+DEFAULT_FORM_EMAIL = 'DWadmin<dwadm@pcl.ac.cn>'
 
 
 TEMPLATES = [
