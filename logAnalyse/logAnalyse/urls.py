@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^$',views.gitLogStat),
     url(r'^admin/', admin.site.urls),
     url(r'^setgitLogData/',gitlog.setgitLogData),
+    url(r'^getStat/',gitlog.getStat)
 ]

@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>gitLog提交统计分析</title>
-<link type="text/css" rel="stylesheet" href="/static/table.css">
-<script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/gitlogStatic/table.css">
+<script src="/gitlogStatic/js/jquery.min.js"></script>
 
-<script type="text/javascript" src="/static/js/jquery.date_input.pack.js"></script> 
+<script type="text/javascript" src="/gitlogStatic/js/jquery.date_input.pack.js"></script> 
 
 </head>
 
@@ -68,67 +68,114 @@ $(function(){
 
 
 </script>
-
 <div id="wrapper">
 	<div id="divform">
-	  <p class="title_text">gitLog分析工具</p>
+	  <p class="title_text">gitlog分析小工具</p>
 	  <form id="form">
-		<span id="box1">提示：请输入官网可检验真伪的正规邮箱</span><table width="600" border="0" cellspacing="0" cellpadding="0">
+		<span id="box1">提示：请输入官网可检验真伪的正规邮箱</span>
+		<table width="600" border="0" cellspacing="0" cellpadding="0">
 		  <tbody>
+			  <tr>
+				<td class="td">统计方式</td>
+				<td>
+					  <select id="type" class='select_type' οnchange="type_change">
+						  <option value="new" disabled>统计方式</option>
+						  <option value="0" selected>统计整体提交情况</option>
+						  <option value="1" >统计以公司为单位的提交排名</option>
+						  <option value="2" >统计指定公司指定目录下所有文件夹的提交总数</option>
+						  <option value="12" >统计指定公司指定路径下的提交频率</option>
+					  </select>
+			  	</td>
+			  </tr>
 			  <tr>
 				  <td class="td">gitHub地址</td>
 				  <td><input id="url" type="text"  placeholder="请输入github地址"></td>
 			  </tr>
 			  <tr>
-				  <td class="td">统计修改路径</td>
-				  <td><input id="path" type="text" placeholder="不同路径以;隔开，全路径可不输入"></td>
-			  </tr>
-			  <tr>
-				  <td class="td">统计提交用户</td>
-				  <td><input id="author" type="text" placeholder="不同提交用户以;隔开，全部用户可不输入"></td>
-			  </tr>
-			  <tr>
-				  <td class="td">统计频率</td>
-				  <td>
-						<select id="frequency" class='select_type'>
-							<option value="new" disabled>统计commit频率</option>
-							<option value="1" selected>月</option>
-							<option value="3" >季度</option>
-							<option value="6" >半年</option>
-							<option value="12" >年</option>
-						</select>
-				
-					
-					<!-- 这里结束 -->
-				</td>
-			  </tr>
-			  <tr>
-				  <td class="td">开始时间</td>
-				  <td><input id="startTime"  class="date_picker" placeholder="2015-01-01"></td>
-			  </tr>
-			  <tr>
-				  <td class="td">结束时间</td>
-				  <td><input id="endTime" class="date_picker" placeholder="2020-08-30"></td>
-			  </tr>
-			  <tr>
-				  <td class="td">接收数据方式</td>
-				  <td>
-			
-						<select id="data_type" class='select_type'>
-							<option value="new" disabled>接收数据格式</option>
-							<option value="sql">sql格式</option>
-							<option value="excel" selected>excel格式</option>
-						</select>
-					<!-- 这里结束 -->
-				</td>
-			  </tr>
-			  <tr>
+				<td class="td">开始时间</td>
+				<td><input id="startTime"  class="date_picker" placeholder="2015-01-01"></td>
+			</tr>
+			<tr>
+				<td class="td">结束时间</td>
+				<td><input id="endTime" class="date_picker" placeholder="2020-08-30"></td>
+			</tr>
+			<tr>
 				  <td class="td">接收数据邮箱</td>
 				  <td><input id="mailbox" type="text" placeholder="提示：请输入官网可检验真伪的正规邮箱"></td>
 			  </tr>
 		</tbody>
-		
-	</table>
+		<tbody id="type_1" >
+			<tr>
+				<td class="td">统计修改路径</td>
+				<td><input id="path" type="text" placeholder="不同路径以;隔开，全路径可不输入"></td>
+			</tr>
+			<tr>
+				<td class="td">统计提交用户</td>
+				<td><input id="author" type="text" placeholder="不同提交用户以;隔开，全部用户可不输入"></td>
+			</tr>
+			<tr>
+				<td class="td">统计频率</td>
+				<td>
+					<select id="frequency" class='select_type'>
+						<option value="new" disabled>统计commit频率</option>
+						<option value="1" selected>月</option>
+						<option value="3" >季度</option>
+						<option value="6" >半年</option>
+						<option value="12" >年</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="td">接收数据方式</td>
+				<td>
+					<select id="data_type" class='select_type'>
+						<option value="new" disabled>接收数据格式</option>
+						<option value="sql">sql格式</option>
+						<option value="excel" selected>excel格式</option>
+					</select>
+						<!-- 这里结束 -->
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="type_2" style="display: none;">
+			<tr>
+				<td class="td">统计目录</td>
+				<td><input id="file_path" type="text" placeholder="如(drivers/等)，若统计所有目录的提交可不填写"></td>
+			</tr>
+		</tbody>
+		<tbody id="type_3" style="display: none;">
+			<tr>
+				<td class="td">公司邮箱后缀</td>
+				<td><input id="company" type="text" placeholder="请输入公司邮箱后缀"></td>
+			</tr>
+			<tr>
+				<td class="td">统计路径</td>
+				<td><input id="company_file_path" type="text" placeholder="如(drivers/等)，若统计所有目录的提交可不填写"></td>
+			</tr>
+	  </tbody>
+	  <tbody id="type_4" style="display: none;">
+		<tr>
+			<td class="td">公司邮箱后缀</td>
+			<td><input id="freq_company" type="text" placeholder="请输入公司邮箱后缀"></td>
+		</tr>
+		<tr>
+			<td class="td">统计修改路径</td>
+			<td><input id="freq_path" type="text" placeholder="如(drivers/net/xxx等)，全路径可不输入"></td>
+		</tr>
+		<tr>
+			<td class="td">统计频率</td>
+			<td>
+				<select id="frequency" class='select_type'>
+					<option value="new" disabled>统计commit频率</option>
+					<option value="1" selected>月</option>
+					<option value="3" >季度</option>
+					<option value="6" >半年</option>
+					<option value="12" >年</option>
+				</select>
+			</td>
+		</tr>
+  	</tbody>
+		</table>
 	<button class="commit-button" onclick="submit_form()">提交</button>
 	  </form>
 	  　　<iframe id="rfFrame" name="rfFrame" src="about:blank" style="display:none;"></iframe> 
@@ -147,62 +194,131 @@ $(function(){
 			var frequency = document.getElementById('frequency');
             var frequency_type=frequency.selectedIndex;
 			var data_type = document.getElementById('data_type');
-            var type=data_type.selectedIndex;
-			console.log(data_type+type)
+			var type=data_type.selectedIndex;
+			var file_path =  document.getElementById("file_path").value;
+			var company_file_path =  document.getElementById("company_file_path").value;
+			var company =  document.getElementById("company").value;
+			var freq_company =  document.getElementById("freq_company").value;
+			var freq_path =  document.getElementById("freq_path").value;
+			var anay_type = document.getElementById('type').selectedIndex;
 			var re = /^[a-zA-Z0-9_;]+$/;
 			var repath = /^[a-zA-Z0-9_;_//]+$/;
+			var reFile_path = /^[a-zA-Z0-9_-_//]+$/;
+			var recompany = /^[a-zA-Z_.0-9_-]+$/;
+
 			var url_flag = true;
 			var path_flag = true;
 			var auth_flag = true;
-			var email_flag = true; 
+			var email_flag = false; 
+			var file_path_flag = true;
+			var company_file_path_flag = true;
+			var freq_company_flag = false;
+			var company_flag = false;
+			var freq_path_flag  = true;
+			
 			if(url.length == 0){
 				document.forms[0].target="rfFrame"; 
 				var url_flag = false;
 				alert("请输入正确的需要分析的路径")	
 			}
-			if(path.length != 0 && !(repath.test(path))){
-				path_flag = false;
-				alert("请输入文件路径用英文;隔开，如果统计所有路径的总提交数，可不填写")
-			}else if(path.length == 0){
-				path = ""
-			}
-			if(author.length != 0 && !(re.test(author))){
-				auth_flag = false;
-				alert("请输入用户名(大小写字符及下划线)用英文;隔开，如果统计总提交数，可不填写")
-			}else if(author.length == 0){
-				author = ""
-			}
 			var email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
 			if(email.length != 0 && email_re.test(email)) {
 				$('#mailbox').css('borderColor', '#39e962');
-				mailbox_bool = true;
+				email_flag = true;
 			}else{
 				alert("请输入正确的邮箱地址")
 				email_flag = false; 
 			}
+			
+			if(anay_type == "1"){
+				if(path.length != 0 && !(repath.test(path))){
+					path_flag = false;
+					alert("请输入文件路径用英文;隔开，如果统计所有路径的总提交数，可不填写")
+				}else if(path.length == 0){
+					path = ""
+				}
+				if(author.length != 0 && !(re.test(author))){
+					auth_flag = false;
+					alert("请输入用户名(大小写字符及下划线)用英文;隔开，如果统计总提交数，可不填写")
+				}else if(author.length == 0){
+					author = ""
+				}
+			}else if(anay_type == "2"){
+				if(file_path.length != 0 && !(reFile_path.test(file_path))){
+					file_path_flag= false;
+					alert("请输入文件路径,如果统计所有路径的总提交数，可不填写")
+				}else if(file_path.length == 0){
+					file_path = ""
+				}
+			}else if(anay_type == "3" ){
+				if(company_file_path.length != 0 && !(reFile_path.test(company_file_path))){
+					company_file_path_flag = false;
+					alert("请输入文件路径,如果统计所有路径的总提交数，可不填写")
+				}else if(company_file_path.length == 0){
+					company_file_path = ""
+				}
+				if(company.length != 0 && (recompany.test(company))){
+					company_flag = true;
+				}else {
+					company_flag = false;
+				}
+			}else if(anay_type == "4" ){
+				if(freq_company.length != 0 && (recompany.test(freq_company))){
+					freq_company_flag = true;
+				}else {
+					freq_company_flag = false;
+				}
+				if(freq_path.length != 0 && !(reFile_path.test(freq_path))){
+					freq_path_flag = false;
+					alert("请输入文件路径,如果统计所有路径的总提交数，可不填写")
+				}else if(freq_path.length == 0){
+					freq_path = ""
+				}
+			}
+
 			if(startTime.length == 0){
 				startTime="2015-01-01"
 			}
 			if(endTime.length == 0){
 				endTime = "2020-08-30"
 			}
-			var dataJson = {
-			"gitCloneUrl":url,
-			"gitpath":path,
-			"startTime":startTime,
-			"endTime":endTime,
-			"commitFreq":frequency_type,
-			"author":author,
-			"file_type":type,
-			"email":email
+		
+			var flag = false;
+			
+			if(anay_type == "1"){
+				flag = email_flag && url_flag && path_flag && auth_flag;
+			}else if(anay_type == "2"){
+				flag = email_flag && url_flag && file_path_flag
+			}else if(anay_type == '3'){
+				flag = email_flag && url_flag && company_file_path_flag && company_flag
+			}else if(anay_type == '4'){
+				flag =email_flag && url_flag && freq_company_flag && freq_path_flag
 			}
-			if(email_flag && url_flag && path_flag && auth_flag){
-				alert("gitLog日志分析已提交，结果会发至邮箱，请耐心等待")
+			
+			var dataJson = {
+				"gitCloneUrl":url,
+				"email":email,
+				"startTime":startTime,
+				"endTime":endTime,
+				"gitpath":path,
+				"commitFreq":frequency_type,
+				"author":author,
+				"file_type":type,
+				"file_path":file_path,
+				"company":company,
+				"company_path":company_file_path,
+				"freq_company":freq_company,
+				"freq_path":freq_path,
+				"anay_type":anay_type
+			}
+			if(flag){
+				
 				var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
-				var postUrl = "http://210.22.22.150:1740/setgitLogData/"
+				var postUrl = "https://dw.pcl.ac.cn/gitlog/getStat/"
 				httpRequest.open('POST', postUrl, true); //第二步：打开连接
 				httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
 				httpRequest.send(JSON.stringify(dataJson));//发送请求 将情头体写在send中
+				alert("gitLog日志分析已提交，结果会发至邮箱，请耐心等待")
 				/**
 				* 获取数据后的处理程序
 				*/
@@ -217,6 +333,30 @@ $(function(){
 			
  			
 		}
+		$("#type").change(function(){
+			var anay_type = document.getElementById('type').selectedIndex;
+			if(anay_type == "1"){
+				document.getElementById("type_1").style.display="";
+				document.getElementById("type_2").style.display="none";
+				document.getElementById("type_3").style.display="none";
+				document.getElementById("type_4").style.display="none";
+			}else if(anay_type == "2"){
+				document.getElementById("type_1").style.display="none";
+				document.getElementById("type_2").style.display="";
+				document.getElementById("type_3").style.display="none";
+				document.getElementById("type_4").style.display="none";
+			}else if(anay_type == "3" ){
+				document.getElementById("type_1").style.display="none";
+				document.getElementById("type_2").style.display="none";
+				document.getElementById("type_3").style.display="";
+				document.getElementById("type_4").style.display="none";
+			}else if(anay_type == "4" ){
+				document.getElementById("type_1").style.display="none";
+				document.getElementById("type_2").style.display="none";
+				document.getElementById("type_3").style.display="none";
+				document.getElementById("type_4").style.display="";
+			}
+		});
 	</script>
 	</script>
 	
