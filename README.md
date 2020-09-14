@@ -150,11 +150,13 @@ https://dw.pcl.ac.cn/dwmain/gitLogStat.html
 5. 5.输入统计提交目录(也可为空)
 6. 6.得到数据后，合并统一单位的邮箱结果，如合并huawei.com和hisilicon.com、intel.com和linux.intel.com等
 7. 7.根据合并后结果画图如下
+
 ![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/1.png)
 ![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/1-1.png)
 
 ![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/2.png)
 ![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/2-2.png)
+
 1. 1.选择-统计指定公司指定目录下所有文件夹提交总数
 2. 2.输入Linux的github地址
 3. 3.输入需要统计的时间范围(2015-01-01至2020-09-04)
@@ -162,11 +164,13 @@ https://dw.pcl.ac.cn/dwmain/gitLogStat.html
 5. 5.输入需要统计的公司的邮箱后缀(分两次统计huawei.com和hisilicon.com)
 6. 6.输入需要统计的目录(默认为一级目录，可不填写；输入drivers则统计drivers下所有二级目录的提交情况)
 7. 7.得到数据后合并数据，结果画图如下
-![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/3.png)
+
+![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/3-1.png)
 ![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/3-3.png)
 
 ![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/4.png)
 ![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/4-4.png)
+
 1. 1.选择-统计指定公司指定路径下的提交频率
 2. 2.输入Linux的github地址
 3. 3.输入需要统计的时间范围(2015-01-01至2020-09-04)
