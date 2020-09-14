@@ -1,5 +1,5 @@
 #过滤文件夹Debug,Release,obj  
 gitlog/
 logAnalyse/gitogStatic/logfile/  
-logAnalyse/logAnalyse/setting.py.bak
-logAnalyse/logAnalyse/setting.py
+logAnalyse/logAnalyse/settings.py.bak
+logAnalyse/logAnalyse/settings.py
