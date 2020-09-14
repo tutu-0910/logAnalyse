@@ -1,5 +1,5 @@
 
-![](https://github.com/tutu-0910/logAnalyse/tree/master/logAnalyse/static/img/favicon.ico)<br>
+![](https://github.com/tutu-0910/logAnalyse/blob/master/logAnalyse/gitlogStatic/img/favicon.ico)<br>
 
 ### 开发单位：鹏城实验室(PCL)
 
@@ -140,3 +140,4 @@ ip:8000
 https://dw.pcl.ac.cn/gitlog/
 ## <span id="head19">分析结果展示示例</span>
 https://dw.pcl.ac.cn/dwmain/gitLogStat.html
+1.选择时间
