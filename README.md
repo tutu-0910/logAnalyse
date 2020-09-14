@@ -141,7 +141,7 @@ https://dw.pcl.ac.cn/gitlog/
 ## <span id="head19">分析结果展示示例</span>
 https://dw.pcl.ac.cn/dwmain/gitLogStat.html
 
-![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/3.png)
+![Image text](https://dw.pcl.ac.cn/dwmain/asset/images/1.png)
 
 1. 选择-统计以公司为单位的提交排名
 2. 输入Linux的github地址
