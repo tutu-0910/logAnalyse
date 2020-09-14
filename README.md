@@ -10,7 +10,7 @@
 		- [ 一、环境配置、安装要求](#head5)
 		- [ 二、输入参数规范](#head10)
 		- [ 三、输出结果说明](#head14)
-	- [ 访问地址](#head18)
+	- [ 工具访问地址](#head18)
 	- [ 分析结果展示示例](#head19)
 
 
@@ -136,7 +136,7 @@ ip:8000
 统计结果会以邮件形式发送至填写的接收邮箱，请注意查收邮件。
 
 
-## <span id="head18">访问地址</span>
+## <span id="head18">工具访问地址</span>
 https://dw.pcl.ac.cn/gitlog/
 ## <span id="head19">分析结果展示示例</span>
 https://dw.pcl.ac.cn/dwmain/gitLogStat.html
